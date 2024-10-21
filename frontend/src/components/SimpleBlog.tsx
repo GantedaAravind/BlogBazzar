@@ -80,7 +80,7 @@ const SimpleBlog = (props: propsType) => {
       <div>
         <img
           src={props.featuredImage}
-          className="h-28 sm:h-32 md:h-36 lg:h-40 aspect-[5/3] rounded-md"
+          className="h-24 sm:h-32 md:h-36 lg:h-40 aspect-[5/3] rounded-md"
         />
       </div>
       {props.showDelete && (

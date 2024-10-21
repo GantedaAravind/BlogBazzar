@@ -233,7 +233,7 @@ const Home: React.FC = () => {
         <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-semibold">
           Treanding Blogs
         </h2>
-        <div className="m-4">
+        <div className="my-4">
           {loadTreanding && (
             <div className="text-white">
               <SimpleBlogSkeletion />
