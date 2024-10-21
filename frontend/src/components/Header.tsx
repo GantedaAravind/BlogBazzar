@@ -112,7 +112,7 @@ const Header = () => {
               className="disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100 disabled:bg-purple-500  disabled:text-white text-base sm:text-md md:text-lg lg:text-xl hover:bg-white hover:text-purple-600 font-medium   transition-all bg-purple-600 px-4 py-1 rounded "
               onClick={() => {
                 playSound();
-                handleLogout;
+                handleLogout();
               }}
               disabled={loading}
             >
