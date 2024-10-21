@@ -43,6 +43,7 @@ const CreateBlog = () => {
   const handleCreatePost = async (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
+    playSound();
     event.preventDefault();
     setLoading(true);
     try {
@@ -61,7 +62,7 @@ const CreateBlog = () => {
         setData(intialData);
         setContent("");
         if (fileInputRef.current) {
-          fileInputRef.current.value = ''; // Clear the file input
+          fileInputRef.current.value = ""; // Clear the file input
         }
       } else {
         throw new Error(dataResponse.message);
@@ -108,7 +109,10 @@ const CreateBlog = () => {
       <form className="w-fit max-w-[95%]">
         {/* Blog Title Input */}
         <div className="flex items-center gap-2 md:gap-4 lg:gap-6 ">
-          <label htmlFor="title" className="text-md sm:text-lg md:text-xl lg:text-2xl font-medium">
+          <label
+            htmlFor="title"
+            className="text-md sm:text-lg md:text-xl lg:text-2xl font-medium"
+          >
             Blog Title
           </label>
           <input
@@ -123,7 +127,9 @@ const CreateBlog = () => {
 
         <div className="flex md:items-center flex-col md:flex-row ">
           <div className="flex items-center justify-start mt-4 ">
-            <p className="text-white text-base sm:text-md md:text-lg lg:text-xl font-medium  w-40">Cover Photo</p>
+            <p className="text-white text-base sm:text-md md:text-lg lg:text-xl font-medium  w-40">
+              Cover Photo
+            </p>
             <input
               type="file"
               ref={fileInputRef}
@@ -139,7 +145,9 @@ const CreateBlog = () => {
           </div>
 
           <div className="my-4 ">
-            <p className="text-base sm:text-md md:text-lg lg:text-xl font-medium inline">Catrgory </p>
+            <p className="text-base sm:text-md md:text-lg lg:text-xl font-medium inline">
+              Catrgory{" "}
+            </p>
             <select
               className="bg-transparent mx-4 text-center  w-[60%] md:w-64 lg:w-72 outline-none border-b-2 p-1 cursor-pointer"
               onChange={handleOnChange}
@@ -176,7 +184,9 @@ const CreateBlog = () => {
         </div>
 
         <div className="flex items-center gap-9">
-          <p className="text-base sm:text-md md:text-lg lg:text-xl font-medium ">Tags</p>
+          <p className="text-base sm:text-md md:text-lg lg:text-xl font-medium ">
+            Tags
+          </p>
           <input
             type="text"
             onChange={handleOnChange}
@@ -189,10 +199,7 @@ const CreateBlog = () => {
 
         <div className="flex items-center justify-around my-4">
           <button
-            onClick={()=>{
-              playSound();
-              handleCreatePost}
-            }
+            onClick={handleCreatePost}
             disabled={loading}
             className="bg-purple-500 flex items-center gap-2  px-4 font-medium text-sm sm:text-base md:text-md lg:text-lg py-1 rounded disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105 hover:bg-white hover:text-purple-500 "
           >
