@@ -43,8 +43,8 @@ const CreateBlog = () => {
   const handleCreatePost = async (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    playSound();
     event.preventDefault();
+    playSound();
     setLoading(true);
     try {
       const response = await axiosInstance.post("/blog/create-blog", {
