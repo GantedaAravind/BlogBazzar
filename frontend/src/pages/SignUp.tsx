@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { PiUserCirclePlusFill } from "react-icons/pi";
 import imageToBase64 from "../helper/imageToBase64";
+import playSound from "../common/playSound";
 
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
@@ -39,6 +40,7 @@ const SignUp = () => {
   };
 
   const signupHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+    playSound();
     event.preventDefault();
     setLoading(true);
 
@@ -155,7 +157,10 @@ const SignUp = () => {
               onSubmit={signupHandler}
             >
               <div className="mt-2 sm:mt-4 md:mt-6 lg:mt-8  flex items-center  gap-2 border-b-2 ">
-                <label className=" text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer " htmlFor="name">
+                <label
+                  className=" text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer "
+                  htmlFor="name"
+                >
                   <FaUserGraduate />
                 </label>
                 <input
@@ -170,7 +175,10 @@ const SignUp = () => {
                 />
               </div>
               <div className="flex items-center  gap-2 border-b-2 mt-2 lg:mt-4">
-                <label className="text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer " htmlFor="email">
+                <label
+                  className="text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer "
+                  htmlFor="email"
+                >
                   <MdOutlineMailLock />
                 </label>
                 <input
@@ -186,7 +194,10 @@ const SignUp = () => {
               </div>
 
               <div className="flex items-center  gap-2 border-b-2 mt-2 lg:mt-4 ">
-                <label className="text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer " htmlFor="password">
+                <label
+                  className="text-base sm:text-md md:text-lg lg:text-xl  cursor-pointer "
+                  htmlFor="password"
+                >
                   <IoMdKey />
                 </label>
                 <input
@@ -220,8 +231,11 @@ const SignUp = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
+                onClick={() => {
+                  playSound();
+                }}
                 className="text-red-500 capitalize hover:underline cursor-pointer "
-              > 
+              >
                 Log In
               </Link>
             </p>

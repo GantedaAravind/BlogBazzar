@@ -5,6 +5,7 @@ import axiosInstance from "../config";
 import { Link } from "react-router-dom";
 import { blogType } from "../common/someDataTypes";
 import moment from "moment";
+import playSound from "../common/playSound";
 
 interface propsType extends blogType {
   showDelete: boolean;
@@ -36,6 +37,7 @@ const SimpleBlog = (props: propsType) => {
 
   return (
     <Link
+      onClick={()=>{playSound();}}
       to={`/blog/${props._id}`}
       key={props._id}
       className="border-2 rounded-lg border-zinc-500 w-full p-2 flex my-2 justify-between gap-4 relative"

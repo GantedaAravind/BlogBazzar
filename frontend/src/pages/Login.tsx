@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/userSlice";
 import { RootState } from "../store";
+import playSound from "../common/playSound";
 
 const Login = () => {
   const [password, setPassword] = useState<string>("");
@@ -38,6 +39,7 @@ const Login = () => {
   };
 
   const loginHanlder = async (event: React.FormEvent<HTMLFormElement>) => {
+    playSound();
     event.preventDefault();
     console.log(email, password); // Log to ensure email and password are set
     setLoading(true);
@@ -154,6 +156,7 @@ const Login = () => {
               New to our BlockBazaar?{" "}
               <Link
                 to="/sign-up"
+                onClick={()=>{playSound();}}
                 className="text-red-500 capitalize hover:underline cursor-pointer pr-3"
               >
                 create an account

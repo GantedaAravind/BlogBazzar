@@ -6,6 +6,7 @@ import uploadImage from "../helper/uploadImage";
 import axios from "axios";
 import toast from "react-hot-toast";
 import axiosInstance from "../config";
+import playSound from "../common/playSound";
 
 const CreateBlog = () => {
   const editor = useRef<Jodit | null>(null); // Reference to the editor
@@ -188,7 +189,10 @@ const CreateBlog = () => {
 
         <div className="flex items-center justify-around my-4">
           <button
-            onClick={handleCreatePost}
+            onClick={()=>{
+              playSound();
+              handleCreatePost}
+            }
             disabled={loading}
             className="bg-purple-500 flex items-center gap-2  px-4 font-medium text-sm sm:text-base md:text-md lg:text-lg py-1 rounded disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105 hover:bg-white hover:text-purple-500 "
           >

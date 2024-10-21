@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { blogType } from "../common/someDataTypes";
+import playSound from "../common/playSound";
 
 const TrendingBlog = (props: blogType) => {
   return (
     <Link 
       to={`/blog/${props._id}`} 
+      onClick={()=>{playSound();}}
       className="flex w-full border-2 border-zinc-500 rounded gap-3 transition-transform duration-300 ease-in-out hover:shadow-lgrounded-lg shadow-md"
     >
       <div className="w-fit rounded-md overflow-hidden shadow-md">

@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoCloudUploadSharp } from "react-icons/io5";
 import SimpleBlog from "../components/SimpleBlog";
 import { blogType } from "../common/someDataTypes";
+import playSound from "../common/playSound";
 
 const MyProfile = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -86,6 +87,9 @@ const MyProfile = () => {
         <div className="mt-10 flex justify-center ">
           <Link
             to={"/create-blog"}
+            onClick={()=>{
+              playSound();
+            }}
             className=" px-4 py-2  flex items-center gap-4 bg-purple-600 rounded hover:bg-white hover:text-purple-500 font-semibold"
           >
             <p>Create Blog</p>

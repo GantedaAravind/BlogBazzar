@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import TrendingBlog from "../components/TrendingBlog";
 import SimpleBlog from "../components/SimpleBlog";
+import playSound from "../common/playSound";
 
 interface ImageItem {
   url: string;
@@ -126,7 +127,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row  justify-between ">
-        <div className="w-[90%] lg:w-[63%] mx-8 mt-3  rounded-lg overflow-hidden">
+        <div className="w-[90%] lg:w-[63%] mx-auto lg:mx-8 mt-3  rounded-lg overflow-hidden">
           <div
             id="carouselExampleDark"
             className="carousel carousel-dark slide"
@@ -152,7 +153,7 @@ const Home: React.FC = () => {
                   className={`carousel-item ${index === 0 ? "active" : ""}`}
                   data-bs-interval="2000"
                 >
-                  <Link to={`/category/${image.url}`}>
+                  <Link to={`/category/${image.url}`} onClick={()=>{playSound();}}>
                     <img
                       src={image.imageUrl}
                       className="d-block w-100 aspect-[7/4]"
