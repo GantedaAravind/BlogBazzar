@@ -41,7 +41,7 @@ const CreateBlog = () => {
   };
 
   const handleCreatePost = async (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     playSound();
@@ -106,7 +106,7 @@ const CreateBlog = () => {
 
   return (
     <div className="flex justify-around">
-      <form className="w-fit max-w-[95%]">
+      <form className="w-fit max-w-[95%]" onSubmit={handleCreatePost}>
         {/* Blog Title Input */}
         <div className="flex items-center gap-2 md:gap-4 lg:gap-6 ">
           <label
@@ -199,7 +199,6 @@ const CreateBlog = () => {
 
         <div className="flex items-center justify-around my-4">
           <button
-            onClick={handleCreatePost}
             disabled={loading}
             className="bg-purple-500 flex items-center gap-2  px-4 font-medium text-sm sm:text-base md:text-md lg:text-lg py-1 rounded disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105 hover:bg-white hover:text-purple-500 "
           >
