@@ -7,6 +7,8 @@ import axios from "axios";
 import TrendingBlog from "../components/TrendingBlog";
 import SimpleBlog from "../components/SimpleBlog";
 import playSound from "../common/playSound";
+import TrendingBlogSkeleton from "../components/TrendingBlogSkeleton";
+import SimpleBlogSkeletion from "../components/SimpleBlogSkeletion";
 
 interface ImageItem {
   url: string;
@@ -75,8 +77,11 @@ const Home: React.FC = () => {
 
   const [latestBlogs, setLatestBlogs] = useState<blogType[]>([]);
   const [trendingBlog, setTrendingBLog] = useState<blogType[]>([]);
+  const [loadTreanding, setLoadTrending] = useState<boolean>(false);
+  const [loadLatest, setLatest] = useState<boolean>(false);
 
   const fetchLatestBlogs = async () => {
+    setLatest(true);
     try {
       const response = await axiosInstance.get(`/blog/latest`);
 
@@ -97,8 +102,10 @@ const Home: React.FC = () => {
         toast.error("Something went wrong");
       }
     }
+    setLatest(false);
   };
   const fetchTreandingBlogs = async () => {
+    setLoadTrending(true);
     try {
       const response = await axiosInstance.get(`/blog/treanding`);
       const dataResponse = response.data;
@@ -117,6 +124,7 @@ const Home: React.FC = () => {
         toast.error("Something went wrong");
       }
     }
+    setLoadTrending(false);
   };
 
   useEffect(() => {
@@ -153,7 +161,12 @@ const Home: React.FC = () => {
                   className={`carousel-item ${index === 0 ? "active" : ""}`}
                   data-bs-interval="2000"
                 >
-                  <Link to={`/category/${image.url}`} onClick={()=>{playSound();}}>
+                  <Link
+                    to={`/category/${image.url}`}
+                    onClick={() => {
+                      playSound();
+                    }}
+                  >
                     <img
                       src={image.imageUrl}
                       className="d-block w-100 aspect-[7/4]"
@@ -192,6 +205,13 @@ const Home: React.FC = () => {
         <div className="w-[90%] mx-auto lg:w-[35%]">
           <h2 className="text-md  md:text-xl font-semibold">Latest Blogs</h2>
           <div className="flex flex-col items-center justify-around gap-2 m-2">
+            {loadLatest && (
+              <div className="w-[95%]">
+                <TrendingBlogSkeleton />
+                <TrendingBlogSkeleton />
+                <TrendingBlogSkeleton />
+              </div>
+            )}
             {latestBlogs.map((blog) => {
               return (
                 <TrendingBlog
@@ -210,23 +230,39 @@ const Home: React.FC = () => {
         </div>
       </div>
       <div className="m-4">
-        <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-semibold">Treanding Blogs</h2>
+        <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-semibold">
+          Treanding Blogs
+        </h2>
         <div className="m-4">
-          {trendingBlog.map((blog) => {
-            return (
-              <SimpleBlog
-                key={blog._id}
-                _id={blog._id}
-                title={blog.title}
-                content={blog.content}
-                authorId={blog.authorId}
-                featuredImage={blog.featuredImage}
-                showDelete={false}
-                createdAt={blog.createdAt}
-                category={blog.category}
-              />
-            );
-          })}
+          {loadTreanding && (
+            <div className="text-white">
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+              <SimpleBlogSkeletion />
+            </div>
+          )}
+          {!loadTreanding &&
+            trendingBlog.map((blog) => {
+              return (
+                <SimpleBlog
+                  key={blog._id}
+                  _id={blog._id}
+                  title={blog.title}
+                  content={blog.content}
+                  authorId={blog.authorId}
+                  featuredImage={blog.featuredImage}
+                  showDelete={false}
+                  createdAt={blog.createdAt}
+                  category={blog.category}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

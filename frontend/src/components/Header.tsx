@@ -60,7 +60,7 @@ const Header = () => {
   };
 
   return (
-    <div className="shadow-purple z-30  fixed w-full   rounded-md bg-[#181427]">
+    <div className="shadow-purple z-30  fixed w-full bg-[#181427]">
       <div className="flex items-center justify-between w-[90%] mx-auto">
         <Link to={"/"} className="m-2 flex items-center gap-2" onClick={()=>{playSound();}}>
           <span className=" text-lg sm:text-xl md:text-2xl lg:text-3xl">

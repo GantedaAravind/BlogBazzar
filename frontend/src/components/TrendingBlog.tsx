@@ -9,7 +9,7 @@ const TrendingBlog = (props: blogType) => {
       onClick={()=>{playSound();}}
       className="flex w-full border-2 border-zinc-500 rounded gap-3 transition-transform duration-300 ease-in-out hover:shadow-lgrounded-lg shadow-md"
     >
-      <div className="w-fit rounded-md overflow-hidden shadow-md">
+      <div className="w-fit rounded-md m-1 overflow-hidden shadow-md">
         <img 
           src={props.featuredImage} 
           className="h-[100px] w-[140px] md:h-[120px] md:w-[160px] lg:h-[140px] lg:w-[200px] object-cover" 
