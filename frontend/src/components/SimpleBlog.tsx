@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import { blogType } from "../common/someDataTypes";
 import moment from "moment";
 import playSound from "../common/playSound";
+import { motion } from "framer-motion";
 
 interface propsType extends blogType {
   showDelete: boolean;
 }
+const MotionLink = motion(Link);
 
 const SimpleBlog = (props: propsType) => {
   const handleDeleteBlog = async (id: string) => {
@@ -36,8 +38,22 @@ const SimpleBlog = (props: propsType) => {
   };
 
   return (
-    <Link
-      onClick={()=>{playSound();}}
+    <MotionLink
+      initial={{
+        opacity: 0,
+        y: -100,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 1,
+        type: "spring",
+      }}
+      onClick={() => {
+        playSound();
+      }}
       to={`/blog/${props._id}`}
       key={props._id}
       className="border-2 rounded-lg border-zinc-500 w-full p-2 flex my-2 justify-between gap-4 relative"
@@ -93,7 +109,7 @@ const SimpleBlog = (props: propsType) => {
           <MdDelete />
         </div>
       )}
-    </Link>
+    </MotionLink>
   );
 };
 
