@@ -49,7 +49,12 @@ const Search = () => {
 
   // UseEffect to trigger search when query changes
   useEffect(() => {
-    fetchSearchResults(query);
+    const t = setTimeout(()=>{
+      fetchSearchResults(query);
+    },300)
+    return ()=>{
+      clearTimeout(t);
+    }
   }, [query]);
 
   return (
