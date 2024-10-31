@@ -10,9 +10,11 @@ import { useDispatch } from "react-redux";
 // import { RootState } from "@reduxjs/toolkit/query";
 import { login } from "./store/userSlice";
 import { Helmet } from "react-helmet";
-import ScrollProgessBar from "./components/ScrollProgessBar";
+import { motion,useScroll } from "framer-motion";
+// import ScrollProgessBar from "./components/ScrollProgessBar";
 
 function App() {
+  const { scrollYProgress } = useScroll();
   const dispatch = useDispatch();
 
   const fetchUserDetails = async () => {
@@ -50,11 +52,24 @@ function App() {
 
   return (
     <>
-      <ScrollProgessBar />
       <Helmet>
         <title>BlogBazzar</title>
       </Helmet>
 
+      <motion.div
+        style={{
+          scaleX: scrollYProgress, // Scale horizontally with scroll progress
+          transformOrigin: "0 0", // Scale from the left
+          height: "4px", // Adjust thickness of the progress bar
+          backgroundColor: "#7E22CE", // Progress bar color
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          borderRadius: 100,
+          zIndex: 1000, // Keep on top of other elements
+        }}
+      />
       <UserContext.Provider value={{ fetchUserDetails }}>
         <Header />
         <main className="min-h-[calc(100vh-36px)]  pt-16">
