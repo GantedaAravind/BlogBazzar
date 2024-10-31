@@ -10,6 +10,8 @@ import playSound from "../common/playSound";
 import TrendingBlogSkeleton from "../components/TrendingBlogSkeleton";
 import SimpleBlogSkeletion from "../components/SimpleBlogSkeletion";
 
+import {motion } from "framer-motion";
+
 interface ImageItem {
   url: string;
   category: string;
@@ -136,7 +138,21 @@ const Home: React.FC = () => {
     <div>
       <div className="flex flex-col lg:flex-row  justify-between ">
         <div className="w-[90%] lg:w-[63%] mx-auto lg:mx-8 mt-3  rounded-lg overflow-hidden">
-          <div
+          <motion.div
+         
+          initial={{
+            opacity: 0,
+            x: -100,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 1.5,
+
+            type: "spring",
+          }}
             id="carouselExampleDark"
             className="carousel carousel-dark slide"
             data-bs-ride="carousel"
@@ -200,7 +216,7 @@ const Home: React.FC = () => {
               <span className="carousel-control-next-icon" aria-hidden="true" />
               <span className="visually-hidden">Next</span>
             </button>
-          </div>
+          </motion.div>
         </div>
         <div className="w-[90%] mx-auto lg:w-[35%]">
           <h2 className="text-md  md:text-xl font-semibold">Latest Blogs</h2>
