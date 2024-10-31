@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 // import { RootState } from "@reduxjs/toolkit/query";
 import { login } from "./store/userSlice";
 import { Helmet } from "react-helmet";
+import { motion, useScroll } from "framer-motion";
+import ScrollProgessBar from "./components/ScrollProgessBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +44,7 @@ function App() {
       }
     }
   };
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     fetchUserDetails();
@@ -49,6 +52,7 @@ function App() {
 
   return (
     <>
+      <ScrollProgessBar />
       <Helmet>
         <title>BlogBazzar</title>
       </Helmet>
