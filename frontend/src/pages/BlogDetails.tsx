@@ -6,6 +6,7 @@ import axios from "axios";
 import { blogType } from "../common/someDataTypes";
 import moment from "moment";
 import SimpleBlog from "../components/SimpleBlog";
+import { Helmet } from "react-helmet";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -81,9 +82,15 @@ const BlogDetails = () => {
             alt="loading"
             className="mix-blend-color-dodge w-[50%] "
           />
+          <Helmet>
+            <title>Loading...</title>
+          </Helmet>
         </div>
       ) : (
         <div className="w-full mt-6">
+          <Helmet>
+            <title>{blogData?.title}</title>
+          </Helmet>
           <div className="flex w-full  justify-center ">
             <div className=" w-fit  flex flex-col  gap-8 ">
               <img
