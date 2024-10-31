@@ -13,7 +13,7 @@ import { RootState } from "../store";
 import { PiUserCirclePlusFill } from "react-icons/pi";
 import imageToBase64 from "../helper/imageToBase64";
 import playSound from "../common/playSound";
-
+import { motion } from "framer-motion";
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -118,7 +118,21 @@ const SignUp = () => {
 
   return (
     <div className="min-h-[calc(100vh-110px)] flex items-center justify-around ">
-      <div className="flex items-center  shadow-purple  w-fit border-2 border-purple-500  p-4   rounded-md">
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 2,
+          type: "spring",
+        }}
+        className="flex items-center  shadow-purple  w-fit border-2 border-purple-500  p-4   rounded-md"
+      >
         <div className="hidden md:block">
           <img src="/signupImage.svg" alt="Login" className="md:h-80 lg:h-96" />
         </div>
@@ -241,7 +255,7 @@ const SignUp = () => {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
