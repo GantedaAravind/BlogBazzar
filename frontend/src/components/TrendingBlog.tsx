@@ -7,19 +7,6 @@ const MotionLink = motion(Link);
 const TrendingBlog = (props: blogType) => {
   return (
     <MotionLink
-      initial={{
-        opacity: 0,
-        x: 100,
-      }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
-      transition={{
-        duration: 1.5,
-        // ease : ""
-        type: "spring",
-      }}
       to={`/blog/${props._id}`}
       onClick={() => {
         playSound();

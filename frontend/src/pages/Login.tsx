@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/userSlice";
 import { RootState } from "../store";
 import playSound from "../common/playSound";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [password, setPassword] = useState<string>("");
@@ -85,7 +86,21 @@ const Login = () => {
   }, []);
   return (
     <div className="min-h-[calc(100vh-110px)] flex items-center justify-around">
-      <div className="flex h-full  shadow-purple  w-fit border-2 border-purple-500 p-1  sm:p-2 md:p-3 lg:p-4 rounded-md">
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 2,
+          type: "spring",
+        }}
+        className="flex h-full  shadow-purple  w-fit border-2 border-purple-500 p-1  sm:p-2 md:p-3 lg:p-4 rounded-md"
+      >
         <div className="hidden md:block">
           <img src={loginImage} alt="Login" className="md:h-80 lg:h-96" />
         </div>
@@ -156,7 +171,9 @@ const Login = () => {
               New to our BlockBazaar?{" "}
               <Link
                 to="/sign-up"
-                onClick={()=>{playSound();}}
+                onClick={() => {
+                  playSound();
+                }}
                 className="text-red-500 capitalize hover:underline cursor-pointer pr-3"
               >
                 create an account
@@ -164,7 +181,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

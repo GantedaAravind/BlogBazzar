@@ -139,20 +139,6 @@ const Home: React.FC = () => {
       <div className="flex flex-col lg:flex-row  justify-between ">
         <div className="w-[90%] lg:w-[63%] mx-auto lg:mx-8 mt-3  rounded-lg overflow-hidden">
           <motion.div
-         
-          initial={{
-            opacity: 0,
-            x: -100,
-          }}
-          animate={{
-            opacity: 1,
-            x: 0,
-          }}
-          transition={{
-            duration: 1.5,
-
-            type: "spring",
-          }}
             id="carouselExampleDark"
             className="carousel carousel-dark slide"
             data-bs-ride="carousel"
