@@ -8,7 +8,7 @@ const ScrollProgessBar = () => {
           scaleX: scrollYProgress, // Scale horizontally with scroll progress
           transformOrigin: "0 0", // Scale from the left
           height: "4px", // Adjust thickness of the progress bar
-          backgroundColor: "#7E22CE", // Progress bar color
+          color: "#7E22CE", // Progress bar color
           position: "fixed",
           top: 0,
           left: 0,
