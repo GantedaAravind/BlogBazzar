@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 // import { RootState } from "@reduxjs/toolkit/query";
 import { login } from "./store/userSlice";
 import { Helmet } from "react-helmet";
-import { motion, useScroll } from "framer-motion";
 import ScrollProgessBar from "./components/ScrollProgessBar";
 
 function App() {
