@@ -41,10 +41,10 @@ const SimpleBlog = (props: propsType) => {
     <MotionLink
       initial={{
         opacity: 0,
-        y: -100,
+        y: 100,
       }}
       whileInView={{
-        opacity: 1,
+        opacity: 1.5,
         y: 0,
       }}
       transition={{
@@ -56,7 +56,7 @@ const SimpleBlog = (props: propsType) => {
       }}
       to={`/blog/${props._id}`}
       key={props._id}
-      className="border-2 rounded-lg border-zinc-500 w-full p-2 flex my-2 justify-between gap-4 relative"
+      className="border-2 rounded-lg shadow-purple  border-purple-500 w-full p-2 flex my-2 justify-between gap-4 relative"
     >
       <div className="w-[90%] sm:w-[85%] md:w-[80%] lg:w-[75%]">
         <p className="text-md sm:text-lg md:text-xl lg:text-2xl font-semibold line-clamp-1 capitalize mb-2">
