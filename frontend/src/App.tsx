@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { RootState } from "@reduxjs/toolkit/query";
 import { login } from "./store/userSlice";
+import { Helmet } from "react-helmet";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,10 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>BlogBazzar</title>
+      </Helmet>
+
       <UserContext.Provider value={{ fetchUserDetails }}>
         <Header />
         <main className="min-h-[calc(100vh-36px)]  pt-16">
