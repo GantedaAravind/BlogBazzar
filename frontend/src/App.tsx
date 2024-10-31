@@ -44,7 +44,6 @@ function App() {
       }
     }
   };
-  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     fetchUserDetails();
