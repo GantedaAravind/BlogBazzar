@@ -51,7 +51,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <Helmet>
         <title>BlogBazzar</title>
       </Helmet>
@@ -77,7 +77,7 @@ function App() {
         </main>
         <Footer />
       </UserContext.Provider>
-    </>
+    </div>
   );
 }
 
