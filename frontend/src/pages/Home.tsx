@@ -136,8 +136,8 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row  justify-between ">
-        <div className="w-[90%] lg:w-[63%] mx-auto lg:mx-8 mt-3  rounded-lg overflow-hidden">
+      <div className="flex flex-col items-center lg:flex-row  justify-between ">
+        <div className="w-[90%] lg:w-[63%] mx-auto lg:mx-8   rounded-lg overflow-hidden">
           <motion.div
             id="carouselExampleDark"
             className="carousel carousel-dark slide"
