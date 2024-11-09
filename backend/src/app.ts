@@ -16,7 +16,10 @@ app.use(express.urlencoded({ limit: "5mb", extended: true }));
 
 app.use(
   cors({
-    origin: "https://blogbazzar.onrender.com", // Allow requests from your frontend
+    origin: [
+      "https://blogbazzar365.web.app",
+      "https://blogbazzar.onrender.com",
+    ], // Allow requests from your frontend
     credentials: true, // Allow credentials (cookies, authentication)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Define allowed methods
     allowedHeaders: "Content-Type,Authorization", // Define allowed headers

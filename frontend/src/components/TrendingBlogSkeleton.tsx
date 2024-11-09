@@ -9,8 +9,7 @@ export const TrendingBlogSkeleton = () => {
         </p>
         <div className="line-clamp-4 text-lg rounded-sm mt-6 placeholder w-[80%] "></div>
         <div className="line-clamp-4 text-lg rounded-sm mt-2 placeholder w-[70%]"></div>
-        <div className="line-clamp-4 text-lg rounded-sm mt-2 placeholder w-[60%]"></div>
-        <div className="line-clamp-4 text-lg rounded-sm mt-2 placeholder w-[40%]"></div>
+        <div className="line-clamp-4 text-lg rounded-sm mt-2 placeholder w-[50%]"></div>
       </div>
     </div>
   );
