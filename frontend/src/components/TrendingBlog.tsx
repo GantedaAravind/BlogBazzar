@@ -16,7 +16,7 @@ const TrendingBlog = (props: blogType) => {
       <div className="w-fit rounded-md m-1 overflow-hidden shadow-md">
         <img
           src={props.featuredImage}
-          className="h-[100px] w-[140px] md:h-[120px] md:w-[160px] lg:h-[140px] lg:w-[200px] object-cover"
+          className="h-[80px] w-[120px] md:h-[100px] md:w-[140px] lg:h-[120px] lg:w-[180px] object-cover"
           alt={props.title || ""}
         />
       </div>
