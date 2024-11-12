@@ -12,6 +12,8 @@ import { login } from "../store/userSlice";
 import { RootState } from "../store";
 import playSound from "../common/playSound";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Login = () => {
   const [password, setPassword] = useState<string>("");
@@ -102,7 +104,8 @@ const Login = () => {
         className="flex h-full  shadow-purple  w-fit border-2 border-purple-500 p-1  sm:p-2 md:p-3 lg:p-4 rounded-md"
       >
         <div className="hidden md:block">
-          <img src={loginImage} alt="Login" className="md:h-80 lg:h-96" />
+          <LazyLoadImage 
+                      effect="blur" src={loginImage} alt="Login" className="md:h-80 lg:h-96" />
         </div>
         <div className="flex items-center  md:px-4   ">
           <div className="">

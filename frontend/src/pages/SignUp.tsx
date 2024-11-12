@@ -14,6 +14,9 @@ import { PiUserCirclePlusFill } from "react-icons/pi";
 import imageToBase64 from "../helper/imageToBase64";
 import playSound from "../common/playSound";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -134,7 +137,12 @@ const SignUp = () => {
         className="flex items-center  shadow-purple  w-fit border-2 border-purple-500  p-4   rounded-md"
       >
         <div className="hidden md:block">
-          <img src="/signupImage.svg" alt="Login" className="md:h-80 lg:h-96" />
+          <LazyLoadImage
+            effect="blur"
+            src="/signupImage.svg"
+            alt="Login"
+            className="md:h-80 lg:h-96"
+          />
         </div>
         <div className="flex items-center  md:px-4">
           <div className="">
@@ -146,7 +154,8 @@ const SignUp = () => {
                   </p>
                 ) : (
                   <div className=" flex items-center justify-around">
-                    <img
+                    <LazyLoadImage
+                      effect="blur"
                       src={profilePicture}
                       className="w-10 h-10 md:w-12 md:h-12 rounded-full"
                       alt="User Image"

@@ -139,11 +139,15 @@ const AdminProfile = () => {
         </div>
         <div className="mt-10 flex justify-center  ">
           <Link
-          onClick={()=>{playSound();}}
+            onClick={() => {
+              playSound();
+            }}
             to={"/create-blog"}
             className=" px-3 py-2  flex items-center gap-4 bg-purple-600 rounded hover:bg-white hover:text-purple-500 font-semibold"
           >
-            <p className="text-balance sm:text-md md:text-lg lg:text-xl">Create Blog</p>
+            <p className="text-balance sm:text-md md:text-lg lg:text-xl">
+              Create Blog
+            </p>
             <div className="text-lg md:text-xl lg:text-2xl">
               <IoCloudUploadSharp />
             </div>
@@ -166,9 +170,15 @@ const AdminProfile = () => {
               <table className="w-full ">
                 <thead>
                   <tr className="bg-purple-800 rounded-md border-2 text-center">
-                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">Name</th>
-                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">Email</th>
-                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">Role</th>
+                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">
+                      Name
+                    </th>
+                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">
+                      Email
+                    </th>
+                    <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">
+                      Role
+                    </th>
                     <th className="border-r-2 sm:text-base md:text-md lg:text-lg font-semibold">
                       created At
                     </th>
@@ -178,9 +188,15 @@ const AdminProfile = () => {
                   {Alluser.map((el) => {
                     return (
                       <tr className={``} key={el._id}>
-                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">{el.name}</td>
-                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">{el.email}</td>
-                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">{el.role}</td>
+                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">
+                          {el.name}
+                        </td>
+                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">
+                          {el.email}
+                        </td>
+                        <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">
+                          {el.role}
+                        </td>
                         <td className="text-center  sm:text-sm md:text-base lg:text-md p-1 border">
                           {moment(el.createdAt).format("DD-MM-YYYY")}
                         </td>

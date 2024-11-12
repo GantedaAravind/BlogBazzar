@@ -5,6 +5,8 @@ import axiosInstance from "../config";
 import toast from "react-hot-toast";
 import axios from "axios";
 import SimpleBlog from "../components/SimpleBlog";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Search = () => {
   // Access the current URL's query parameters
@@ -49,17 +51,19 @@ const Search = () => {
 
   // UseEffect to trigger search when query changes
   useEffect(() => {
-    const t = setTimeout(()=>{
+    const t = setTimeout(() => {
       fetchSearchResults(query);
-    },300)
-    return ()=>{
+    }, 300);
+    return () => {
       clearTimeout(t);
-    }
+    };
   }, [query]);
 
   return (
     <div className="w-[90%] mx-auto">
-      <h2 className="text-base sm:text-md md:text-lg lg:text-xl ">Search Results : {searchBlogs.length}</h2>
+      <h2 className="text-base sm:text-md md:text-lg lg:text-xl ">
+        Search Results : {searchBlogs.length}
+      </h2>
       {loading ? (
         <div className="flex justify-around">
           <img
@@ -88,7 +92,7 @@ const Search = () => {
             })
           ) : (
             <div className="w-[60%] mx-auto">
-              <img src={"/page-not-found.svg"} />
+              <LazyLoadImage effect="blur" src={"/page-not-found.svg"} />
               <p className="text-center text-2xl my-4 font-semibold ">
                 No Blogs Found
               </p>

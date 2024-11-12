@@ -10,6 +10,8 @@ import { IoCloudUploadSharp } from "react-icons/io5";
 import SimpleBlog from "../components/SimpleBlog";
 import { blogType } from "../common/someDataTypes";
 import playSound from "../common/playSound";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const MyProfile = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -59,7 +61,8 @@ const MyProfile = () => {
         <div className="">
           <div className="flex  items-center justify-center mt-8 ">
             {user.profilePicture != "" ? (
-              <img
+              <LazyLoadImage 
+                      effect="blur"
                 src={user.profilePicture}
                 className="w-20 h-20 rounded-full"
               />
@@ -103,7 +106,8 @@ const MyProfile = () => {
         <div className="w-full">
           {loading && (
             <div className="flex justify-around">
-              <img
+              <LazyLoadImage 
+                      effect="blur"
                 src="/loading.gif"
                 alt="loading"
                 className="mix-blend-color-dodge w-[60%] "
@@ -114,7 +118,8 @@ const MyProfile = () => {
             <div className="flex flex-col">
               {allBlogs.length == 0 ? (
                 <div className="w-[80%] mx-auto">
-                  <img src={"/page-not-found.svg"} />
+                  <LazyLoadImage 
+                      effect="blur" src={"/page-not-found.svg"} />
                   <p className="text-center text-2xl my-4 font-semibold ">
                     No Blogs Found
                   </p>

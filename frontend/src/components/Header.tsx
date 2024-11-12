@@ -10,6 +10,8 @@ import axios from "axios";
 import { TbLoader2 } from "react-icons/tb";
 import { logout } from "../store/userSlice";
 import playSound from "../common/playSound";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Header = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -62,7 +64,13 @@ const Header = () => {
   return (
     <div className="shadow-purple z-30  fixed w-full bg-[#181427]">
       <div className="flex items-center justify-between w-[90%] mx-auto">
-        <Link to={"/"} className="m-2 flex items-center gap-2" onClick={()=>{playSound();}}>
+        <Link
+          to={"/"}
+          className="m-2 flex items-center gap-2"
+          onClick={() => {
+            playSound();
+          }}
+        >
           <span className=" text-lg sm:text-xl md:text-2xl lg:text-3xl">
             <FaBloggerB />
           </span>
@@ -86,7 +94,9 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {user.loggedIn && (
             <Link
-            onClick={()=>{playSound();}}
+              onClick={() => {
+                playSound();
+              }}
               to={`${user.role === "admin" ? "admin" : "my"}-profile`}
               className=""
             >
@@ -97,7 +107,8 @@ const Header = () => {
               ) : (
                 <div>
                   <span className="">
-                    <img
+                    <LazyLoadImage
+                      effect="blur"
                       src={user.profilePicture}
                       className="rounded-full w-8 h-8  lg:w-10 lg:h-10 aspect-square"
                       alt="user Picture"
@@ -128,7 +139,9 @@ const Header = () => {
           ) : (
             <Link
               to={"/login"}
-              onClick={()=>{playSound();}}
+              onClick={() => {
+                playSound();
+              }}
               className=" text-base sm:text-md md:text-lg lg:text-xl hover:bg-white hover:text-purple-600 font-medium   transition-all bg-purple-600 px-4 py-1 rounded "
             >
               Login

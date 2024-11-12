@@ -205,7 +205,7 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
         <div className="w-[90%] mx-auto lg:w-[35%]">
-          <h2 className="text-md  md:text-xl font-semibold">Latest Blogs</h2>
+          <h2 className="text-md sm:text-xl  md:text-2xl font-semibold">Latest Blogs</h2>
           <div className="flex flex-col items-center justify-around gap-2 m-2">
             {loadLatest && (
               <div className="w-[95%]">

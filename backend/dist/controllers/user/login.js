@@ -5,7 +5,6 @@ import { COOKIE_NAME } from "../../utils/constants.js";
 const userLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        // console.log(email,password);
         const existingUser = await userModel.findOne({ email });
         if (!existingUser) {
             return res.status(401).json({

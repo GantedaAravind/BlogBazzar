@@ -7,6 +7,8 @@ import { blogType } from "../common/someDataTypes";
 import moment from "moment";
 import SimpleBlog from "../components/SimpleBlog";
 import { Helmet } from "react-helmet";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -93,7 +95,8 @@ const BlogDetails = () => {
           </Helmet>
           <div className="flex w-full  justify-center ">
             <div className=" w-fit  flex flex-col  gap-8 ">
-              <img
+              <LazyLoadImage
+                      effect="blur"
                 className="w-[95%] mx-auto sm:w-[480px] rounded md:w-[600px] lg:w-[800px] aspect-[7/4] "
                 src={blogData?.featuredImage}
                 alt={blogData?.title + "image"}
@@ -105,7 +108,8 @@ const BlogDetails = () => {
                       {blogData?.authorId?.name[0]}
                     </div>
                   ) : (
-                    <img
+                    <LazyLoadImage
+                      effect="blur"
                       src={blogData?.authorId.profilePicture}
                       className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full"
                     />

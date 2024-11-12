@@ -7,6 +7,8 @@ import { blogType } from "../common/someDataTypes";
 import moment from "moment";
 import playSound from "../common/playSound";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface propsType extends blogType {
   showDelete: boolean;
@@ -69,7 +71,8 @@ const SimpleBlog = (props: propsType) => {
                 {props?.authorId?.name[0]}
               </div>
             ) : (
-              <img
+              <LazyLoadImage
+                      effect="blur"
                 src={props?.authorId.profilePicture}
                 className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-full"
               />
@@ -94,7 +97,8 @@ const SimpleBlog = (props: propsType) => {
         ></div>
       </div>
       <div>
-        <img
+        <LazyLoadImage
+                      effect="blur"
           src={props.featuredImage}
           className="h-24 sm:h-32 md:h-36 lg:h-40 aspect-[5/3] rounded-md"
         />

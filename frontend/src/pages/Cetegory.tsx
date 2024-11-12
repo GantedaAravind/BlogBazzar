@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import axiosInstance from "../config";
 import { blogType } from "../common/someDataTypes";
 import SimpleBlog from "../components/SimpleBlog";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Cetegory = () => {
   const { category } = useParams<{ category: string }>(); // Type the useParams
@@ -64,7 +66,8 @@ const Cetegory = () => {
         <div className="w-[80%] mx-auto  ">
           {blogs.length === 0 ? (
             <div className="w-[80%] mx-auto">
-              <img src={"/page-not-found.svg"} />
+              <LazyLoadImage
+                      effect="blur" src={"/page-not-found.svg"} />
               <p className="text-center text-2xl my-4 font-semibold ">
                 No Blogs Found
               </p>
