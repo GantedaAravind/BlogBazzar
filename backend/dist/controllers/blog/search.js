@@ -29,19 +29,19 @@ const getSearch = async (req, res, next) => {
                     from: "users", // Collection name in MongoDB
                     localField: "authorId", // Field in blogs collection
                     foreignField: "_id", // Field in users collection
-                    as: "author", // Alias for populated data
+                    as: "authorId", // Alias for populated data
                 },
             },
             {
-                $unwind: "$author", // Converts array to an object (optional)
+                $unwind: "$authorId", // Converts array to an object (optional)
             },
             {
                 $project: {
                     title: 1,
                     content: 1,
                     createdAt: 1,
-                    "author.name": 1,
-                    "author.profilePicture": 1, // Include only necessary fields
+                    "authorId.name": 1,
+                    "authorId.profilePicture": 1, // Include only necessary fields
                 },
             },
         ]);
