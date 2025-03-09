@@ -12,14 +12,46 @@ const getSearch = async (req: Request, res: Response, next: NextFunction) => {
       $or: [
         { title: phraseRegex }, // Match the entire phrase in the title
         { content: phraseRegex }, // Match the entire phrase in the content
-        { tags: { $elemMatch: { $regex: phraseRegex } } } // Match any tag that contains the search phrase
+        { tags: { $elemMatch: { $regex: phraseRegex } } }, // Match any tag that contains the search phrase
       ],
     };
 
     // Find blogs based on the search query
-    const blogs = searchKeyword
-      ? await blogModel.find(searchQuery).populate("authorId", "name profilePicture")
-      : await blogModel.find({}).populate("authorId", "name profilePicture");
+    const blogs = await blogModel.aggregate([
+      {
+        $search: {
+          index: "default",
+          text: {
+            query: searchKeyword ? searchKeyword : "",
+            path: {
+              wildcard: "*",
+            },
+          },
+        },
+      },
+      {
+        $lookup: {
+          from: "users", // Collection name in MongoDB
+          localField: "authorId", // Field in blogs collection
+          foreignField: "_id", // Field in users collection
+          as: "author", // Alias for populated data
+        },
+      },
+      {
+        $unwind: "$author", // Converts array to an object (optional)
+      },
+      {
+        $project: {
+          title: 1,
+          content: 1,
+          createdAt: 1,
+          "author.name": 1,
+          "author.profilePicture": 1, // Include only necessary fields
+        },
+      },
+    ]);
+
+    //populate("authorId", "name profilePicture")
 
     return res.status(200).json({
       message: "All Blogs...🙂",
@@ -35,6 +67,5 @@ const getSearch = async (req: Request, res: Response, next: NextFunction) => {
     });
   }
 };
-
 
 export default getSearch;
